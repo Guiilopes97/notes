@@ -40,6 +40,13 @@
                                     <button type="submit" class="btn btn-secondary w-100">LOGIN</button>
                                 </div>
                             </form>
+
+                            {{-- Errors --}}
+                            @if (session('loginError'))
+                                <div class="alert alert-danger text-center">
+                                    {{ session('loginError') }}
+                                    </div>
+                            @endif
                         </div>
                     </div>
 
@@ -47,7 +54,7 @@
                     <div class="text-center text-secondary mt-3">
                         <small>&copy; <?= date('Y') ?> Notes</small>
                     </div>
-
+                    
                 </div>
             </div>
         </div>
