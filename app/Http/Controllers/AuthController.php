@@ -58,7 +58,7 @@ class AuthController extends Controller
         }
 
         // update last login
-        $user->last_login = now();
+        $user->last_login = date('Y-m-d H:i:s');
         $user->save();
 
         // set session
