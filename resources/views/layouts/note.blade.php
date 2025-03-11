@@ -8,10 +8,10 @@
                         </span><strong>{{ date('d/m/Y H:i:s', strtotime($note['created_at'])) }}</strong></small>
                 </div>
                 <div class="col text-end">
-                    <a href="/edit/{{ encrypt($note['id']) }}" class="btn btn-outline-secondary btn-sm mx-1">
+                    <a href="{{ route('edit', ['id' => encrypt($note['id'])]) }}" class="btn btn-outline-secondary btn-sm mx-1">
                         <i class="fa-regular fa-pen-to-square"></i>
                     </a>
-                    <a href="/delete/{{ encrypt($note['id']) }}" class="btn btn-outline-danger btn-sm mx-1">
+                    <a href="{{ route('delete', ['id' => encrypt($note['id'])]) }}" class="btn btn-outline-danger btn-sm mx-1">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </div>
