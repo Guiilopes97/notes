@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\TryCatch;
@@ -36,15 +37,15 @@ class AuthController extends Controller
         $username = $request->get('text_username');
         $password = $request->get('text_password');
 
-        // check if user exists in database
-        try{
-            DB::connection()->getPdo();
-            echo "Connected";
-        } catch (\PDOException $e) {
-            echo $e;
-        }
+        // get user from database
+        // $user = User::all()->toArray();
+        $userModel = new User();
+        $user = $userModel->all()->toArray();
 
-        dd($request->all());
+        // check if user exists
+        echo "<pre>";
+        print_r($user);
+        echo "</pre>";
     }
 
     public function logout()
