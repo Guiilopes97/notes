@@ -20,17 +20,31 @@
                 </div>
 
                 <!-- form -->
-                <form action="{{ route('newNoteSubmit') }}" method="post">
+                <form action="{{ route('newNoteSubmit') }}" method="post" novalidate>
                     @csrf
                     <div class="row mt-3">
                         <div class="col">
                             <div class="mb-3">
                                 <label class="form-label">Note Title</label>
-                                <input type="text" class="form-control bg-primary text-white" name="text_title">
+                                <input type="text" class="form-control bg-primary text-white" name="text_title" value="{{ old('text_title') }}" required>
+
+                                {{-- show error --}}
+                                @error('text_title')
+                                <div class="text-danger">
+                                    <small>{{ $message }}</small>
+                                </div>
+                            @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Note Text</label>
-                                <textarea class="form-control bg-primary text-white" name="text_note" rows="5"></textarea>
+                                <textarea class="form-control bg-primary text-white" name="text_note" rows="5" required>{{ old('text_note') }}</textarea>
+
+                                {{-- show error --}}
+                                @error('text_note')
+                                    <div class="text-danger">
+                                        <small>{{ $message }}</small>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
