@@ -1,6 +1,4 @@
-![Logo do Projeto](public/assets/images/logo.png)
-
-# Notes - Sistema Web para Gerenciamento de Notas
+# ![Logo do Projeto](public/assets/images/logo.png) - Sistema Web para Gerenciamento de Notas
 
 ## Descrição do Projeto
 
