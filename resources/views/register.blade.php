@@ -8,13 +8,13 @@
 
                     <!-- logo -->
                     <div class="text-center p-3">
-                        <img src="assets/images/logo.png" alt="Notes logo">
+                        <img src="{{ asset("assets/images/logo.png") }}" alt="Notes logo">
                     </div>
 
                     <!-- form -->
                     <div class="row justify-content-center">
                         <div class="col-md-10 col-12">
-                            <form action="/loginSubmit" method="post">
+                            <form action="/registerSubmit" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="text_username" class="form-label">E-mail</label>
@@ -36,16 +36,27 @@
                                         </div>
                                     @enderror
                                 </div>
+
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-info w-100">LOGIN</button>
-                                    <a href="{{ route('register') }}" class="btn btn-secondary w-100 mt-3">REGISTER</a>
+                                    <label for="text_confirm_password" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control bg-dark text-info" id="text_confirm_password" name="text_confirm_password" value="{{ old('text_confirm_password') }}" autocomplete="current-password" required>
+                                    {{-- show error --}}
+                                    @error('text_confirm_password')
+                                        <div class="text-danger">
+                                            <small>{{ $message }}</small>
+                                        </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-info w-100">REGISTER</button>
+                                    <a href="{{ route('login') }}" class="btn btn-secondary w-100 mt-3">LOGIN</a>
                                 </div>
                             </form>
 
                             {{-- Errors --}}
-                            @if (session('loginError'))
+                            @if (session('registerError'))
                                 <div class="alert alert-danger text-center">
-                                    {{ session('loginError') }}
+                                    {{ session('registerError') }}
                                     </div>
                             @endif
                         </div>
